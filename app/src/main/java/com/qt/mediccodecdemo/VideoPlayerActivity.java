@@ -131,7 +131,6 @@ public class VideoPlayerActivity extends AppCompatActivity implements SurfaceHol
                     default:
                         ByteBuffer buffer = outputBuffers[outIndex];
                         Log.v("DecodeActivity", "We can't use this buffer but render it due to the API limit, " + buffer);
-
                         // We use a very simple clock to keep the video FPS, or the video
                         // playback will be too fast
                         while (info.presentationTimeUs / 1000 > System.currentTimeMillis() - startMs) {
