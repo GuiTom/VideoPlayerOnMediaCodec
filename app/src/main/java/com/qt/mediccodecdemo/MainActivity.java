@@ -13,6 +13,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     public void onClick(View view){
-        startActivity(new Intent(MainActivity.this,VideoPlayerActivity.class));
+        switch(view.getId()){
+            case R.id.button:
+                startActivity(new Intent(MainActivity.this,VideoPlayerActivity.class));
+                break;
+            case R.id.button2:
+                startActivity(new Intent(MainActivity.this,VideoJointActivity.class));
+                break;
+        }
+
     }
 }

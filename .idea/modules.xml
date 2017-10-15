@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MedicCodecDemo.iml" filepath="$PROJECT_DIR$/MedicCodecDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VideoPlayerBasedOnMediaCodec.iml" filepath="$PROJECT_DIR$/VideoPlayerBasedOnMediaCodec.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
