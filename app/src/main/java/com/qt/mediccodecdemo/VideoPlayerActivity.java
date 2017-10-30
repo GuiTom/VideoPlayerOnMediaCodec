@@ -1,5 +1,7 @@
 package com.qt.mediccodecdemo;
 
+import android.app.Activity;
+import android.content.Context;
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
@@ -14,6 +16,9 @@ import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
@@ -21,7 +26,7 @@ import static android.R.attr.format;
 import static android.media.AudioTrack.WRITE_BLOCKING;
 
 public class VideoPlayerActivity extends AppCompatActivity implements SurfaceHolder.Callback {
-    private static final String SAMPLE = Environment.getExternalStorageDirectory() + "/1q2.mp4";
+//    private static final String SAMPLE = Environment.getExternalStorageDirectory() + "/1q3.mp4";
     private PlayerThread mPlayer = null;
 
     @Override
@@ -38,6 +43,24 @@ public class VideoPlayerActivity extends AppCompatActivity implements SurfaceHol
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
+    }
+
+    private final void prepareSampleMovie(File path) throws IOException {
+        final Activity activity = this;
+        if (!path.exists()) {
+//            if (DEBUG) Log.i(TAG, "copy sample movie file from res/raw to app private storage");
+            final BufferedInputStream in = new BufferedInputStream(activity.getResources().openRawResource(R.raw.sample));
+            final BufferedOutputStream out = new BufferedOutputStream(activity.openFileOutput(path.getName(), Context.MODE_PRIVATE));
+            byte[] buf = new byte[8192];
+            int size = in.read(buf);
+            while (size > 0) {
+                out.write(buf, 0, size);
+                size = in.read(buf);
+            }
+            in.close();
+            out.flush();
+            out.close();
+        }
     }
 
     @Override
@@ -78,7 +101,11 @@ public class VideoPlayerActivity extends AppCompatActivity implements SurfaceHol
         public void run() {
             extractor = new MediaExtractor();
             try {
-                extractor.setDataSource(SAMPLE);
+                final File dir = VideoPlayerActivity.this.getFilesDir();
+                dir.mkdirs();
+                final File path = new File(dir, "sample.mp4");
+                prepareSampleMovie(path);//将Raw 下面的视频文件复制到当前路径
+                extractor.setDataSource(path.getAbsolutePath());
             } catch (IOException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();

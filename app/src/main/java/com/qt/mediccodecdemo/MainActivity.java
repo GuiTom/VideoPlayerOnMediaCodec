@@ -17,9 +17,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button:
                 startActivity(new Intent(MainActivity.this,VideoPlayerActivity.class));
                 break;
-            case R.id.button2:
-                startActivity(new Intent(MainActivity.this,VideoJointActivity.class));
-                break;
+
         }
 
     }

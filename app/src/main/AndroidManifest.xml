@@ -20,7 +20,6 @@
         <activity
             android:name=".VideoPlayerActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".VideoJointActivity"></activity>
     </application>
 
 </manifest>
