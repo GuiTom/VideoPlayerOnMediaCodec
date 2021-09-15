@@ -1,4 +1,4 @@
-package com.qt.mediccodecdemo;
+package com.qt.mediacodecplayer;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,13 +8,16 @@ import android.media.AudioTrack;
 import android.media.MediaCodec;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.qt.mediacodecplayer.R;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
